@@ -27,14 +27,16 @@ static struct fuse_operations xmp_oper = {
 };
 ```
 
-Isi dari masing-masing ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c).
+Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi xmp_
 
 
 
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
+-  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
+- [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MDE4NTI2NywzNDU0MjIxMTgsMTQ2OT
+eyJoaXN0b3J5IjpbLTYyODgxMjUwNiwzNDU0MjIxMTgsMTQ2OT
 ExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1LDI2NTc1NTQw
 XX0=
 -->

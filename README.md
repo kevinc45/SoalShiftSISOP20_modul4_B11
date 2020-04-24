@@ -16,9 +16,7 @@ Karena kita ingin menghindari ekstensi dari file-file di dalam folder ENCV1 ikut
 
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
-- 
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ5NTAzNDQ0LDIxMTYxMDcxMjUsMjY1Nz
-U1NDBdfQ==
+eyJoaXN0b3J5IjpbLTE4NzE2MzEwNjEsMjExNjEwNzEyNSwyNj
+U3NTU0MF19
 -->

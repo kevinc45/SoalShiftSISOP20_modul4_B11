@@ -29,6 +29,8 @@ static struct fuse_operations xmp_oper = {
 
 Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi ```xmp_getattr```, ```xmp_readdir```, dan ```xmp_read```.
 
+**ENCV_1 belum selesai karena masih menemukan kendala pada enkripsi di tiap file dalam folder e
+
 # ENCV_2
 
 Belum dikerjakan karena tidak sempat.
@@ -46,7 +48,7 @@ Belum dikerjakan karena tidak sempat.
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTA1NjgyOTQsMzQ1NDIyMTE4LDE0Nj
+eyJoaXN0b3J5IjpbLTE1OTU2ODA0MDIsMzQ1NDIyMTE4LDE0Nj
 kxMTgwMDEsLTE4NzE2MzEwNjEsMjExNjEwNzEyNSwyNjU3NTU0
 MF19
 -->

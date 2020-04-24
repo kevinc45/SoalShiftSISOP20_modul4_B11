@@ -31,22 +31,22 @@ Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/a
 
 # ENCV_2
 
-Belum sempat dikerjakan karena tidak sempat.
+Belum dikerjakan karena tidak sempat.
 
 # Automatic Directory Synchronization
 
-Belum sempat dikerjakan karena tidak sempat.
+Belum dikerjakan karena tidak sempat.
 
 # Log System
 
-Belum sempat dikerjakan karena tidak sempat.
+Belum dikerjakan karena tidak sempat.
 
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MTYzMjI3NiwzNDU0MjIxMTgsMTQ2OT
-ExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1LDI2NTc1NTQw
-XX0=
+eyJoaXN0b3J5IjpbLTE0NTA1NjgyOTQsMzQ1NDIyMTE4LDE0Nj
+kxMTgwMDEsLTE4NzE2MzEwNjEsMjExNjEwNzEyNSwyNjU3NTU0
+MF19
 -->

@@ -3,7 +3,7 @@
  - Achmad Sofyan Pratama (05111840000061)
  - Kevin Christian Hadinata (05111840000066)
 
-# ENCV_1
+# ENCV1
 Dengan menggunakan enkripsi berbasis [*Caesar Cipher*](https://en.wikipedia.org/wiki/Caesar_cipher) dengan rangkaian alphabet yang disediakan. Karena kita akan mengenkripsi nama *file* dan *folder* dengan perbedaan jarak 10 dari alfabet asalnya, maka kita perlu menambah 10 alfabet tambahan (yang merupakan 10 alfabet awal) di bagian belakang *dictionary* yang akan kita buat.
 
 ```c
@@ -29,9 +29,9 @@ static struct fuse_operations xmp_oper = {
 
 Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi ```xmp_getattr```, ```xmp_readdir```, dan ```xmp_read```.
 
-**ENCV_1 belum selesai karena masih menemukan kendala pada enkripsi di tiap file dalam folder e
+**[ENCV1 belum selesai karena masih menemukan kendala pada enkripsi di tiap file dalam folder yang diberi nama *encv1_* di depannya.]**
 
-# ENCV_2
+# ENCV2
 
 Belum dikerjakan karena tidak sempat.
 
@@ -48,7 +48,7 @@ Belum dikerjakan karena tidak sempat.
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTU2ODA0MDIsMzQ1NDIyMTE4LDE0Nj
-kxMTgwMDEsLTE4NzE2MzEwNjEsMjExNjEwNzEyNSwyNjU3NTU0
-MF19
+eyJoaXN0b3J5IjpbMTc1MjA3MzYwMiwzNDU0MjIxMTgsMTQ2OT
+ExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1LDI2NTc1NTQw
+XX0=
 -->

@@ -12,11 +12,13 @@ char alphabet[100] = {"9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ
 
 Karena kita ingin menghindari ekstensi dari file-file di dalam folder ENCV1 ikut terenkripsi, maka kita perlu mengambil dulu ekstensi *file* yang kita enkripsi (dengan menggunakan `strchr`, lalu kita tambahkan lagi pada akhir *file* enkripsi.
 
+Dengan menggunakan *fuse*, maka kita dapat melakukan
+
 
 
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzE2MzEwNjEsMjExNjEwNzEyNSwyNj
-U3NTU0MF19
+eyJoaXN0b3J5IjpbMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMT
+E2MTA3MTI1LDI2NTc1NTQwXX0=
 -->

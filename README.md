@@ -7,7 +7,7 @@
 Dengan menggunakan enkripsi berbasis [*Caesar Cipher*](https://en.wikipedia.org/wiki/Caesar_cipher) dengan rangkaian alphabet yang disediakan. Karena kita akan mengenkripsi nama *file* dan *folder* dengan perbedaan jarak 10 dari alfabet asalnya, maka kita perlu menambah 10 alfabet tambahan (yang merupakan 10 alfabet awal) di bagian belakang *dictionary* yang akan kita buat.
 
 ```c
-
+char alphabet[100] = {"9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO9(ku@AW1[Lm"};
 ```
 
 # References:
@@ -15,5 +15,5 @@ Dengan menggunakan enkripsi berbasis [*Caesar Cipher*](https://en.wikipedia.org/
 - 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzE2MDM0ODMsMjY1NzU1NDBdfQ==
+eyJoaXN0b3J5IjpbMTM5NzQ4ODcyMSwyNjU3NTU0MF19
 -->

@@ -3,7 +3,7 @@
  - Achmad Sofyan Pratama (05111840000061)
  - Kevin Christian Hadinata (05111840000066)
 
-# Pembahasan Soal 1
+# ENCV_1
 Dengan menggunakan enkripsi berbasis [*Caesar Cipher*](https://en.wikipedia.org/wiki/Caesar_cipher) dengan rangkaian alphabet yang disediakan. Karena kita akan mengenkripsi nama *file* dan *folder* dengan perbedaan jarak 10 dari alfabet asalnya, maka kita perlu menambah 10 alfabet tambahan (yang merupakan 10 alfabet awal) di bagian belakang *dictionary* yang akan kita buat.
 
 ```c
@@ -17,5 +17,6 @@ char alphabet[100] = {"9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ
 - 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNjEwNzEyNSwyNjU3NTU0MF19
+eyJoaXN0b3J5IjpbOTU5NjAzMzI1LDIxMTYxMDcxMjUsMjY1Nz
+U1NDBdfQ==
 -->

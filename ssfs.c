@@ -7,6 +7,7 @@
 #include <sys/time.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define MAX 256
 char filelama[MAX][MAX];
@@ -15,178 +16,125 @@ char filelama[MAX][MAX];
 static  const  char *dirpath = "/home/kevinc45/Documents";
 char alphabet[100] = {"9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO9(ku@AW1[Lm"};
 
-const char *get_filename_ext(const char *filename) {
-	const char *dot = strrchr(filename, '.');
-	if(!dot || dot == filename) return "";
-	return dot;
-}
-
-char *strremove(char *str, const char *sub) {
-	char *p, *q, *r;
-	if ((q = r = strstr(str, sub)) != NULL) {
-		size_t len = strlen(sub);
-		while ((r = strstr(p = r + len, sub)) != NULL) {
-			while (p < r)
-				*q++ = *p++;
+void caesarcipher(char *filename){
+	int count;
+	int start=0;
+	int length=strlen(filename);
+	int alphabetidx;
+	char *p;
+	for(count=length;count>=0;count--){
+		if(filename[count]=='/') break;
+		if(filename[count]=='.') length=count-1;
+	}
+	for(count=1;count<length;count++){
+		if(filename[count]=='/') start = count;
+	}
+	for(count=start;count<length;count++){
+		if(filename[count]=='/')continue;
+		p=strchr(alphabet,filename[count]);
+		if(p){
+			alphabetidx=p-alphabet;
+			filename[count]=alphabet[(alphabetidx+10)%strlen(alphabet)];
 		}
-		while ((*q++ = *p++) != '\0')
-			continue;
 	}
-	return str;
+  // printf("Encrypt? %s\n",filename);
 }
 
-void caesarcipher(char* dest, const char* src, char* pathsementara){
-	struct dirent *de;
-	strcpy(dest, "");
-  //char* new = (char*)src;
-  //int slash = 0;
-	if (src[0] == '/') 
-	{
-		src++;
-    //slash = 1;
+void caesarDecrypt(char *filename){
+
+	int length = strlen(filename);
+	int start = 0;
+	int count,alphabetidx;
+	char *p;
+	
+	for (count = 1;count < length; count++){
+		if(filename[count] == '/' || filename[count+1] == '\0'){
+			start = count + 1;
+			break;
+		}
 	}
 
-	const char *ekstensifile = get_filename_ext(src);
-	char ekstensi[100];
-	strcpy(ekstensi,ekstensifile);
-	int panjangekstensi = strlen(ekstensifile);
-    //int t;
-    //t = strlen(src);
-    //const char s[2] = "/";
-	char *token;
-    //int first = 1;
-    //printf("%s\n",pathsementara);
-
-	char pathsementaranew[1000];
-	strcpy(pathsementaranew,strremove(pathsementara,dirpath));
-
-	token = strtok(pathsementaranew, "/");
-	if(strncmp(pathsementaranew,"encv1_",6) == 0){
-		sprintf(dest,"%s/",token);
-		token=strtok(NULL,"/");
-		while(token!=NULL){
-			int index_alphabet=0;
-			int panjang=strlen(token);
-			int i=0;
-			while(i<panjang){
-				if(token[i]==alphabet[index_alphabet]){
-					token[i]=alphabet[index_alphabet+10];
-					i++;
-					index_alphabet=0;
-				}
-				else index_alphabet++;
+	for(count = strlen(filename); count >= 0; count--) {
+		if(filename[count] == '/') break;
+		else if(filename[count] == '.'){
+			if(count!=(strlen(filename)-1)){
+				length=count-1;
+				break;
 			}
-			strcat(NULL,token);
-			token=strtok(dest,"/");
-			if(token!=NULL) strcat(dest,"/");
-		}
-	}
-	DIR *dir = opendir("/home/kevinc45/Documents/");
-	while((de = readdir(dir))){
-		if (de->d_type == 4){
-			int panjangjawaban = strlen(dest);
-			for(int p=panjangjawaban-panjangekstensi;p<=panjangjawaban;p++){
-				dest[p]='\0';
+			else {
+				length=strlen(filename);
+				break;
 			}
-			strcat(dest,ekstensi);
 		}
 	}
-        //printf("dest:%s\n",dest);
+
+	for(count = start;count < length;count++) {
+		if(filename[count] == '/') continue;
+		p = strchr(alphabet, filename[count]);
+		if(p){
+			alphabetidx = p-alphabet-10;
+			if (alphabetidx < 0) alphabetidx = alphabetidx + strlen(alphabet);
+			filename[count] = alphabet[alphabetidx];
+		}
+	}
 }
 
-// void decrypt(char* dest, char* src){
-//     struct dirent *de;
-//     strcpy(dest, "");
-//     //char* new = src;
-//     //int slash = 0;
-//     if (src[0] == '/') {
-//     src++;
-//     //slash = 1;
-//     }
+void logwriter(int info, char* cmd, char* fileawal, char* temp){
+	char x[1000];
+	char infox[1000];
+	char temp2[1000];
 
-//     const char *ekstensifile = get_filename_ext(src);
-//     char ekstensi[100];
-//     strcpy(ekstensi,ekstensifile);
-//     int panjangekstensi = strlen(ekstensifile);
-//     //int t;
-//     //t = strlen(src);
-//     const char s[2] = "/";
-//     char *token;
-//     token=strtok(src, s);
-//     while(token!=NULL){
-//         //int index_alphabet=0;
-//         int panjang=strlen(token);
-//         int k=panjang;
-//         int c=panjang;
-//         int i=0;
-//         while(i<panjang){
-//             if(token[i]==alphabet[k]){
-//                 token[i]=alphabet[k-10];
-//                 i++;
-//                 k=c;
-//                 }
-//                 else k--;
-//                 }
-//             strcat(dest,token);
-//             token=strtok(NULL,s);
-//             if(token!=NULL) strcat(dest,"/");
-//             }
-//         DIR *dir = opendir("/home/kevinc45/Documents/");
-//         while((de = readdir(dir))){
-//         if (de->d_type == 4){
-//             int panjangjawaban = strlen(dest);
-//         for(int p=panjangjawaban-panjangekstensi;p<=panjangjawaban;p++){
-//             dest[p]='\0';
-//         }
-//         strcat(dest,ekstensi);
-//         }
-//         }
-// }
+	FILE* fp;
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+
+	sprintf(infox, info?"WARNING":"INFO");
+	if(strcmp(temp,"")) sprintf(temp2, "::%s", temp);
+
+	fp = fopen("/home/kevinc45/fs.log","a");
+	sprintf(x, "%s::%d%d%d-%d:%d:%d::%s::%s%s\n", infox, tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, cmd, fileawal, temp2);
+
+	if(fp==NULL){
+		printf("File gagal dibuat\n");
+		exit(EXIT_FAILURE);
+	}
+	fputs(x,fp);
+	fclose(fp);
+}
 
 static  int  xmp_getattr(const char *path, struct stat *stbuf){
 
 	int res;
 	char fpath[1000];
-	char pathsementara[1000];
-	sprintf(pathsementara,"%s%s",dirpath,path);
+  //char pathsementara[1000];
     //printf("%s\n",pathsementara);
 	char temp[1000];
-	if(strncmp(path,"encv1_",6)==0){
-
-		caesarcipher(temp, path, pathsementara);
-		sprintf(fpath,"%s/%s",dirpath,temp);
-	}
-	else{
-		sprintf(fpath, "%s%s",dirpath,path);
-	} 
-
+	strcpy(temp, path);
+	if(strncmp(path,"/encv1_",7)==0) caesarDecrypt(temp);
+	sprintf(fpath, "%s%s",dirpath,temp);
+  //printf("fpath getattr: %s\n",fpath);
 	res = lstat(fpath, stbuf);
 	if (res == -1)
 		return -errno;
 
 	return 0;
-
 }
 
 static int xmp_read(const char *path, char *buf, size_t size, off_t offset, struct fuse_file_info *fi){
 	char fpath[1000];
-	char pathsementara[1000];
-	sprintf(pathsementara,"%s%s",dirpath,path);
-	if(strcmp(fpath,"/") == 0){
+	if(strcmp(path,"/") == 0){
 		path=dirpath;
 		sprintf(fpath,"%s",path);
 	}
 	else {
 		char temp[1000];
-		if(strncmp(path,"encv1_",6)==0){
-			caesarcipher(temp, path,pathsementara);
-		}
-		else strcpy(temp,path);
-		sprintf(fpath, "%s/%s",dirpath,temp);
+		if(strncmp(path,"/encv1_",7)==0) caesarDecrypt(temp);
+		sprintf(fpath, "%s%s",dirpath,temp);
 	}
+  //printf("fpath read: %s\n",fpath);
 
 	int res = 0;
-	int fd = 0 ;
+	int fd = 0;
 
 	(void) fi;
 
@@ -208,34 +156,25 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 	off_t offset, struct fuse_file_info *fi){
 	char fpath[1000];
 	char pathsementara[1000];
-	sprintf(pathsementara,"%s%s",dirpath,path);
+  //sprintf(pathsementara,"%s%s",dirpath,path);
 	if((strcmp(fpath,"/") == 0))
 	{
 		path=dirpath;
 		sprintf(fpath,"%s",path);
 	}
 	else {
-		char temp[1000];
-		char tempa[1000];
-		strcpy(tempa,path);
-		if(strncmp(path,"encv1_",6)==0){
-			caesarcipher(temp, path,pathsementara);
-			sprintf(fpath, "%s/%s",dirpath,temp);
-		}
-		else {
-            //printf("%s\n",path);
-			sprintf(fpath, "%s%s",dirpath,path);
-		}
+		strcpy(pathsementara,path);
+		if(strncmp(path,"/encv1_",7)==0) caesarDecrypt(pathsementara);
+		sprintf(fpath, "%s/%s",dirpath,pathsementara);
 	}
     //printf("%s\n",fpath);
-
-	int res = 0;  
+	int res = 0;
 
 	DIR *dp;
 	struct dirent *de;
 
 	(void) offset;
-	(void) fi; 
+	(void) fi;
 
 	dp = opendir(fpath);
 	if (dp == NULL)
@@ -247,15 +186,11 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 		st.st_ino = de->d_ino;
 		st.st_mode = de->d_type << 12;
 
-		char temp[1000];
+		if(strcmp(de->d_name, ".") == 0 || strcmp(de->d_name, "..") == 0) continue;
 
-		if(strncmp(path,"/encv1_",7)==0){
-        //printf("Cipher running...\n");
-			caesarcipher(temp, de->d_name, pathsementara);
-		}
-		else {
-			strcpy(temp,de->d_name);
-		}
+		char temp[1000];
+		strcpy(temp,de->d_name);
+		if(strncmp(path,"/encv1_",7)==0) caesarcipher(temp);
 
 		res = (filler(buf, temp, &st, 0));
 		if(res!=0) break;
@@ -264,79 +199,239 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 	closedir(dp);
 
 	return 0;
-
 }
 
-static int xmp_rename(const char *from, const char *to)
-{
+static int xmp_rename(const char *from, const char *to){
+	char awal[1000], akhir[1000], temp[1000];
+	if (strcmp(from, "/") == 0){
+		from = dirpath;
+		sprintf(awal, "%s", from);
+	}
+	else {
+		strcpy(temp, from);
+		if(strncmp(from, "/encv1_", 7) == 0) caesarDecrypt(temp);
+		sprintf(awal, "%s%s", dirpath, temp);
+	}
+
+	if (strcmp(to, "/") == 0){
+		to = dirpath;
+		sprintf(akhir, "%s", to);
+	}
+	else {
+		char temp2[1000];
+		strcpy(temp2, to);
+		if(strncmp(to, "/encv1_", 7) == 0)caesarDecrypt(temp2);
+
+		sprintf(akhir, "%s%s", dirpath, temp2);
+	}
+	
 	int res;
 
-	res = rename(from, to);
+	res = rename(awal, akhir);
 	if (res == -1)
 		return -errno;
 
+	logwriter(0,"RENAME",awal,akhir);
 	return 0;
 }
 
 static int xmp_truncate(const char *path, off_t size)
 {
+	char fpath[1000];
+	if (strcmp(path, "/") == 0){
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		char temp[1000];
+		strcpy(temp, path);
+
+		if(strncmp(path, "/encv1_", 7) == 0) caesarDecrypt(temp);
+
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
 	int res;
 
-	res = truncate(path, size);
+	res = truncate(fpath, size);
 	if (res == -1)
 		return -errno;
 
 	return 0;
 }
 
+static int xmp_write(const char *path, const char *buf, size_t size, off_t offset, struct fuse_file_info *fi)
+{
+	char fpath[1000];
+	if (strcmp(path, "/") == 0){
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		char temp[1000];
+		strcpy(temp, path);
+
+		if(strncmp(path, "/encv1_", 7) == 0) caesarDecrypt(temp);
+
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
+	int fd;
+	int res;
+
+	(void) fi;
+	fd = open(fpath, O_WRONLY);
+	if (fd == -1)
+		return -errno;
+
+	res = pwrite(fd, buf, size, offset);
+	if (res == -1)
+		res = -errno;
+
+	close(fd);
+
+	logwriter(0,"WRITE",fpath,"");
+
+	return res;
+}
 
 static int xmp_mkdir(const char *path, mode_t mode)
 {
+	char fpath[1000];
+	if (strcmp(path, "/") == 0)
+	{
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		char temp[1000];
+		strcpy(temp, path);
+		if(strncmp(path, "/encv1_", 7) == 0) caesarDecrypt(temp);
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
 	int res;
 
-	res = mkdir(path, mode);
+	res = mkdir(fpath, 0750);
 	if (res == -1)
 		return -errno;
+
+	logwriter(0,"MKDIR",fpath,"");
 
 	return 0;
 }
 
 static int xmp_unlink(const char *path)
 {
+	char fpath[1000];
+	if (strcmp(path, "/") == 0)
+	{
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		char temp[1000];
+		strcpy(temp, path);
+
+		if(strncmp(path, "/encv1_", 7) == 0) caesarDecrypt(temp);
+
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
 	int res;
 
-	res = unlink(path);
+	res = unlink(fpath);
 	if (res == -1)
 		return -errno;
 
+	logwriter(1,"UNLINK",fpath,"");
 	return 0;
 }
 
 static int xmp_rmdir(const char *path)
 {
+	char fpath[1000], temp[1000];
+	if (strcmp(path, "/") == 0){
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		strcpy(temp, path);
+		if(strncmp(path, "/encv1_", 7) == 0) caesarDecrypt(temp);
+
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
 	int res;
 
-	res = rmdir(path);
+	res = rmdir(fpath);
 	if (res == -1)
 		return -errno;
+
+	logwriter(1,"RMDIR",fpath,"");
 
 	return 0;
 }
 
 static int xmp_mknod(const char *path, mode_t mode, dev_t rdev)
 {
+	char fpath[1000], temp[1000];
+	if (strcmp(path, "/") == 0){
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		strcpy(temp, path);
+
+		if(strncmp(path, "/encv1_", 7) == 0) caesarDecrypt(temp);
+
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
 	int res;
 
 	if (S_ISREG(mode)) {
-		res = open(path, O_CREAT | O_EXCL | O_WRONLY, mode);
+		res = open(fpath, O_CREAT | O_EXCL | O_WRONLY, mode);
 		if (res >= 0)
 			res = close(res);
 	} else if (S_ISFIFO(mode))
-		res = mkfifo(path, mode);
+	res = mkfifo(fpath, mode);
 	else
-		res = mknod(path, mode, rdev);
+		res = mknod(fpath, mode, rdev);
 	if (res == -1)
 		return -errno;
+
+	logwriter(0,"CREATE",fpath,"");
+
+	return 0;
+}
+
+static int xmp_open(const char *path, struct fuse_file_info *fi)
+{
+	char fpath[1000];
+	if (strcmp(path, "/") == 0)
+	{
+		path = dirpath;
+		sprintf(fpath, "%s", path);
+	}
+	else {
+		char temp[1000];
+		strcpy(temp, path);
+
+		if(strncmp(path, "/encv1_", 7) == 0)caesarDecrypt(temp);
+
+		sprintf(fpath, "%s%s", dirpath, temp);
+	}
+
+	int res;
+
+	res = open(fpath, fi->flags);
+	if (res == -1)
+		return -errno;
+
+	close(res);
+	
+  //logwriter(0, "OPEN", fpath, "");
 
 	return 0;
 }
@@ -350,9 +445,10 @@ static struct fuse_operations xmp_oper = {
 	.mkdir = xmp_mkdir,
 	.unlink = xmp_unlink,
 	.rmdir = xmp_rmdir,
-	.mknod = xmp_mknod
+	.mknod = xmp_mknod,
+	.open = xmp_open,
+	.rename = xmp_rename
 };
-
 
 int main(int  argc, char *argv[]){
 	umask(0);

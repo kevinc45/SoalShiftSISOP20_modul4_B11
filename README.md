@@ -40,7 +40,7 @@ Belum dikerjakan karena tidak sempat.
 Belum dikerjakan karena tidak sempat.
 
 # Log System
-
+Penulisan *log* dilakukan menggunakan fungsi dibawah ini untuk setiap proses yang dilakukan oleh *user*:
 ```c
 void logwriter(int info, char* cmd, char* fileawal, char* temp){
 	char x[1000];
@@ -66,12 +66,17 @@ void logwriter(int info, char* cmd, char* fileawal, char* temp){
 }
 ```
 
+Melalui
+```c
+if(strcmp(temp,"")) sprintf(temp2, "::%s", temp);
+```
+
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTM0NTk4ODUsMTc1MjA3MzYwMiwzND
-U0MjIxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3
-MTI1LDI2NTc1NTQwXX0=
+eyJoaXN0b3J5IjpbMTgxNDEyNDMsMTc1MjA3MzYwMiwzNDU0Mj
+IxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1
+LDI2NTc1NTQwXX0=
 -->

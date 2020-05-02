@@ -31,6 +31,75 @@ static struct fuse_operations xmp_oper = {
 
 Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi-fungsi tersebut sehingga program *file system* dapat mengenkripsi saat mengubah nama folder dengan format "encv1_" di depan dan men-*decrypt* saat perlu melakukan akses pengolahan *file* yang lain.
 
+**Encrypting:**
+```c
+void caesarcipher(char *filename){
+	int count;
+	int start=0;
+	int length=strlen(filename);
+	int alphabetidx;
+	char *p;
+	for(count=length;count>=0;count--){
+		if(filename[count]=='/') break;
+		if(filename[count]=='.') length=count-1;
+	}
+	for(count=1;count<length;count++){
+		if(filename[count]=='/') start = count;
+	}
+	for(count=start;count<length;count++){
+		if(filename[count]=='/')continue;
+		p=strchr(alphabet,filename[count]);
+		if(p){
+			alphabetidx=p-alphabet;
+			filename[count]=alphabet[(alphabetidx+10)%strlen(alphabet)];
+		}
+	}
+  // printf("Encrypt? %s\n",filename);
+}
+```
+
+**Decrypting:**
+```c
+void caesarDecrypt(char *filename){
+
+	int length = strlen(filename);
+	int start = 0;
+	int count,alphabetidx;
+	char *p;
+	
+	for (count = 1;count < length; count++){
+		if(filename[count] == '/' || filename[count+1] == '\0'){
+			start = count + 1;
+			break;
+		}
+	}
+
+	for(count = strlen(filename); count >= 0; count--) {
+		if(filename[count] == '/') break;
+		else if(filename[count] == '.'){
+			if(count!=(strlen(filename)-1)){
+				length=count-1;
+				break;
+			}
+			else {
+				length=strlen(filename);
+				break;
+			}
+		}
+	}
+
+	for(count = start;count < length;count++) {
+		if(filename[count] == '/') continue;
+		p = strchr(alphabet, filename[count]);
+		if(p){
+			alphabetidx = p-alphabet-10;
+			if (alphabetidx < 0) alphabetidx = alphabetidx + strlen(alphabet);
+			filename[count] = alphabet[alphabetidx];
+		}
+	}
+}
+```
+
 # ENCV2
 
 Belum dikerjakan karena tidak sempat.
@@ -77,7 +146,7 @@ log yang ditulis dibedakan antara ```xmp_rename``` dengan yang lain, dimana fung
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MTQzNzQwMiwxNzUyMDczNjAyLDM0NT
-QyMjExOCwxNDY5MTE4MDAxLC0xODcxNjMxMDYxLDIxMTYxMDcx
-MjUsMjY1NzU1NDBdfQ==
+eyJoaXN0b3J5IjpbLTE5NTIzMzAzMDMsMTc1MjA3MzYwMiwzND
+U0MjIxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3
+MTI1LDI2NTc1NTQwXX0=
 -->

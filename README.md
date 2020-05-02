@@ -141,12 +141,14 @@ if(strcmp(temp,"")) sprintf(temp2, "::%s", temp);
 ```
 log yang ditulis dibedakan antara ```xmp_rename``` dengan yang lain, dimana fungsi *rename* akan memiliki 4 parameter (normalnya hanya 3 parameter). 
 
+Setiap fungsi 
+
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTIzMzAzMDMsMTc1MjA3MzYwMiwzND
-U0MjIxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3
-MTI1LDI2NTc1NTQwXX0=
+eyJoaXN0b3J5IjpbODQ0MDYxNDc3LDE3NTIwNzM2MDIsMzQ1ND
+IyMTE4LDE0NjkxMTgwMDEsLTE4NzE2MzEwNjEsMjExNjEwNzEy
+NSwyNjU3NTU0MF19
 -->

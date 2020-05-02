@@ -29,7 +29,7 @@ static struct fuse_operations xmp_oper = {
 };
 ```
 
-Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi-fungsi tersebut sehingga program *file system* dapat mengenkripsi saat mengubah nama folder dengan format "
+Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi-fungsi tersebut sehingga program *file system* dapat mengenkripsi saat mengubah nama folder dengan format "encv1_" di depan dan men-*decrypt* saat perlu melakukan akses pengolahan *file* yang lain.
 
 # ENCV2
 
@@ -41,14 +41,37 @@ Belum dikerjakan karena tidak sempat.
 
 # Log System
 
-Belum dikerjakan karena tidak sempat.
+```c
+void logwriter(int info, char* cmd, char* fileawal, char* temp){
+	char x[1000];
+	char infox[1000];
+	char temp2[1000];
+
+	FILE* fp;
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+
+	sprintf(infox, info?"WARNING":"INFO");
+	if(strcmp(temp,"")) sprintf(temp2, "::%s", temp);
+
+	fp = fopen("/home/kevinc45/fs.log","a");
+	sprintf(x, "%s::%d%d%d-%d:%d:%d::%s::%s%s\n", infox, tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, cmd, fileawal, temp2);
+
+	if(fp==NULL){
+		printf("File gagal dibuat\n");
+		exit(EXIT_FAILURE);
+	}
+	fputs(x,fp);
+	fclose(fp);
+}
+```
 
 # References:
 - [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjA2MTIyMTAsMTc1MjA3MzYwMiwzND
+eyJoaXN0b3J5IjpbLTIwOTM0NTk4ODUsMTc1MjA3MzYwMiwzND
 U0MjIxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3
 MTI1LDI2NTc1NTQwXX0=
 -->

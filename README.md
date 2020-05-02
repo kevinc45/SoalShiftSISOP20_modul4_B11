@@ -29,9 +29,7 @@ static struct fuse_operations xmp_oper = {
 };
 ```
 
-Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi ```xmp_getattr```, ```xmp_readdir```, dan ```xmp_read```.
-
-**[ENCV1 belum selesai karena masih menemukan kendala pada enkripsi di tiap file dalam folder yang diberi nama *encv1_* di depannya.]**
+Isi dari tiap ***xmp*** dapat dilihat di *repository* [ini](https://github.com/asayler/CU-CS3753-PA5/blob/master/fusexmp.c). Untuk mengenkripsi (dan mendekripsi) nama *file*, kita akan melakukan modifikasi pada fungsi-fungsi tersebut sehingga program *file system* dapat men
 
 # ENCV2
 
@@ -50,7 +48,7 @@ Belum dikerjakan karena tidak sempat.
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQzMDM1ODYsMTc1MjA3MzYwMiwzNDU0Mj
-IxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1
-LDI2NTc1NTQwXX0=
+eyJoaXN0b3J5IjpbLTMyNzE4MjEyMSwxNzUyMDczNjAyLDM0NT
+QyMjExOCwxNDY5MTE4MDAxLC0xODcxNjMxMDYxLDIxMTYxMDcx
+MjUsMjY1NzU1NDBdfQ==
 -->

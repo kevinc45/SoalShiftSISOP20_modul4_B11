@@ -23,7 +23,9 @@ static struct fuse_operations xmp_oper = {
 	.mkdir = xmp_mkdir,
 	.unlink = xmp_unlink,
 	.rmdir = xmp_rmdir,
-	.mknod = xmp_mknod
+	.mknod = xmp_mknod,
+	.open = xmp_open,
+	.rename = xmp_rename
 };
 ```
 
@@ -48,7 +50,7 @@ Belum dikerjakan karena tidak sempat.
 -  [https://github.com/Armunz/sisop-modul-4](https://github.com/Armunz/sisop-modul-4)
 - [https://github.com/asayler/CU-CS3753-PA5](https://github.com/asayler/CU-CS3753-PA5)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MjA3MzYwMiwzNDU0MjIxMTgsMTQ2OT
-ExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1LDI2NTc1NTQw
-XX0=
+eyJoaXN0b3J5IjpbNjQzMDM1ODYsMTc1MjA3MzYwMiwzNDU0Mj
+IxMTgsMTQ2OTExODAwMSwtMTg3MTYzMTA2MSwyMTE2MTA3MTI1
+LDI2NTc1NTQwXX0=
 -->
